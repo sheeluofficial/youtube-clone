@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+   #sidebar-small{
+height:90vh;
+width: 80px;
+display: flex;
+flex-direction: column;
+background-color: rgb(32,32,32);
+/* justify-content: center; */
+align-items: center;
+gap: 20px;
+border: none;
+position: sticky;
+top: 10vh;
+}
+#sidebar-small div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+} 
+#sidebar-small div i{
+    font-size: 23px;
+    color: rgb(208, 206, 206);
+}
+#sidebar-small div:nth-child(1) i {
+    margin-top: 25px;
+}
+
+.sidebar-icon-title{
+    font-size: 11px;
+    color: rgb(216, 215, 215);
+    margin-top: 8px;
+    
+}
+    </style>
+ 
+</head>
+<body>
+    <div id="sidebar-small">
+        <div id="home">
+            <i class="fas fa-home"></i>
+            <h4 class="sidebar-icon-title">Home</h4>
+        </div>
+        <div id="explore">
+            <i class="far fa-compass" style="user-select: auto;" ></i>
+            <h4 class="sidebar-icon-title">Explore</h4>
+        </div>
+        <div id="subscription">
+            <i class='far fa-images'></i></i>
+            <h4 class="sidebar-icon-title">Subscription</h4>
+        </div>
+        <div></div>
+    </div>
+</body>
+</html>
