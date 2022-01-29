@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href='https://css.gg/menu.css' rel='stylesheet'>
+    <link href='https://css.gg/search.css' rel='stylesheet'>
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <style >
+    #div{
+        display: flex;
+        flex-direction: row;
+        position: relative;
+    }
+    #main-body{
+        margin: 20px;
+        width: 90vw;
+        background-color: black;
+        z-index: -1;
+        margin-left: 90px;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 12px;
+        color: white;
+    }
+
+    #main-body img{
+        height: 140px;
+
+    }
+    </style>
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="div">
+        <div id="sidebar-small"> </div>
+<div id="container">
+    <div id="tag-slider"></div>
+    <div id="main-body">
+        
+    </div>
+</div>
+   
+    </div>
+   
+</body>
+</html>
+
+<script type="module">
+    import navbar from "./components/navbar.js"
+    import sidebar from "./components/sidebar.js"
+     let nav = document.getElementById("navbar");
+     nav.innerHTML = navbar();
+     let side = document.getElementById("sidebar-small");
+     side.innerHTML = sidebar();
+
+     let API = "AIzaSyCJv4VPPWEAHl_As87OHNcvb9Si7a3akM4"
+     let searchResult = document.getElementById("main-body");
+
+     document.getElementById("search-icon").addEventListener("click",()=>{
+
+      searchVideos();
+
+     })
+     document.getElementById("search-bar").addEventListener("keypress",(event)=>{
+if(event.key=="Enter") {
+
+    searchVideos();
+}
+
+     })
+     
+trend()
+     async function trend() {
+         try{
+             let res = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&regionCode=IN&maxResults=25&key=AIzaSyCJv4VPPWEAHl_As87OHNcvb9Si7a3akM4`)
+             let data = await res.json()
+             let array_of_videos = data.items;
+// console.log(data);
+appendVideos(array_of_videos);
+
+         }
+         catch(err) {
+             console.log((err))
+         }
+     }
+
+async function searchVideos() {
+
+try{
+    let inp = document.getElementById("search-bar").value;
+
+    inp = inp.trim().split(" ");
+    inp = inp.join("+")
+
+let URL = `https://youtube.googleapis.com/youtube/v3/search?q=${inp}&key=${API}&type=video&maxResults=20&part=snippet`
+
+
+let response = await fetch(URL);
+let data = await response.json();
+let array_of_videos = data.items;
+// console.log(data);
+appendVideos(array_of_videos);
+
+} catch(err) {
+    console.log(err);
+}
+
+}
+
+
+function appendVideos(arr) {
+console.log(arr);
+
+arr.forEach(({ id:{videoId},snippet}) => {
+
+let imgurl = snippet.thumbnails.medium.url;
+// console.log(url)
+let div = document.createElement("div");
+   div.setAttribute("id","video-box")
+// div.addEventListener("click",()=>{
+
+// })
+
+let video_data = {
+    snippet,
+    videoId,
+}
+
+div.onclick = ()=>{
+
+    showVideo(video_data);
+}
+
+let img = document.createElement("img");
+img.src = imgurl;
+
+let h4 = document.createElement("h4");
+    h4.innerText = snippet.title;
+//     let iframe = document.createElement("iframe");
+//   let url  = `https://www.youtube.com/embed/${videoId}`;
+//     iframe.setAttribute("src",url)
+//     iframe.width = "270px"
+//     iframe.height = "170px"
+//     iframe.style.border = "none"
+
+
+div.append(img,h4);
+searchResult.append(div);
+});
+
+}
+
+const showVideo = (video_data)=> {
+
+localStorage.setItem("clicked_video",JSON.stringify(video_data));
+window.open("video.html");
+
+}
+
+
+</script>

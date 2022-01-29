@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href='https://css.gg/menu.css' rel='stylesheet'>
+    <link href='https://css.gg/search.css' rel='stylesheet'>
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+            font-family: sans-serif;
+        }
+        #navbar{
+            display: flex;
+            padding: 4px 5px;
+            height: 55px;
+            width: 100%;
+            flex-direction: row;
+            flex-wrap: nowrap;
+             box-sizing: border-box;
+            justify-content: space-between;
+            background-color: rgb(32,32,32);
+            align-items:center;   
+        }
+
+        #left-nav, #center-nav, #right-nav{
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+            align-items:center;   
+        }
+        #center-nav{
+           width: 35%;
+        
+        }
+        #right-nav{
+            gap: 10px;
+            margin-right: 20px;
+            justify-content: center;
+            align-content: center;
+        }
+        #right-nav div{
+         height: 45px;
+         width: 45px;
+         font-size: 22px;
+         display: flex;
+         flex-direction: row;
+         border-radius: 50%;
+      /* background-color: blue; */
+      justify-content: center;
+      align-items: center;
+      color: white;
+        }
+
+        #left-nav i:nth-child(2){
+           font-size: 30px;
+           color: red;
+           margin-left: 20px;
+           margin-right: 5px;
+        }
+        
+        #left-nav i:nth-child(1){
+            font-size: 30px;
+           color: rgb(144,144,144);
+           margin-left: 20px;
+           margin-right: 5px;
+        }
+        #youtube-logo{
+            font-size: 23px;
+            color: whitesmoke;
+        }
+        sup{
+            font-size: 13px;
+            margin: 5px;
+          
+        }
+
+        #search-box{
+            height: 35px;
+            width: 90%;
+            background-color: rgb(49,49,49);
+            display: flex;
+            flex-direction: row;
+        
+       
+        }
+        
+
+        #search-bar{
+            height: 33px;
+            margin-top: 1px;
+            margin-left: 1px;
+            width: 90%;
+            padding: 10px;
+            font-size: 15px;
+            box-sizing: border-box;
+            background-color: rgb(18,18,18);
+            color: rgb(114,114,114);
+           
+            /* border: 1px solid rgb(144,144,144); */
+      
+       
+        }
+
+        #search-bar:focus{
+            box-sizing: border-box;
+border-color: blue;
+        }
+        
+        #search-icon{
+            font-size: 18px;
+            color: rgb(204,204,204);
+            margin-top: 2%;
+            margin-left: 2.8%;
+        }
+#voice-icon{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    font-size: 18px;
+    margin-left: 15px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color:rgb(18,18,18) ;
+    padding: 10px;
+    box-sizing: border-box;
+    color: rgb(204,204,204);
+}
+        
+
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div id="left-nav">
+           <i class="gg-menu" id="menu"></i>
+            <i id="home" class="fab fa-youtube" style=" background-color: whitesmoke; padding: 0px 0px; "></i>
+            <h4 id="youtube-logo">YouTube<sup>in</sup></h4>
+        </div>
+
+        <div id="center-nav">
+            <div id="search-box">
+
+                <input type="text" placeholder="Search" id="search-bar">
+                <i class="fas fa-search" style="user-select: auto;" id="search-icon"></i>
+            </div>
+            <div id="voice-icon">
+                <i class="fas fa-microphone"></i>
+            </div>
+        </div>
+
+        <div id="right-nav">
+            <div> <i class="fas fa-video" class="right-icons" id="shorts"></i></div>
+            <div> <i class="fas fa-grip-horizontal" style="user-select: auto;" class="right-icons" id="more-app"></i></div>
+            <div>   
+                <i class="far fa-bell" style="user-select: auto;" class="right-icons" id="notification"></i></div>
+            <div>
+                <i class="fas fa-user-circle" class="right-icons" id="user-profile"></i></div>
+           
+        
+        </div>
+       
+    </div>
+</body>
+</html>

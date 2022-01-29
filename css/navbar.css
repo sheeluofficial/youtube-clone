@@ -1,0 +1,138 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font-family: sans-serif;
+  
+}
+body{
+    position: relative;
+}
+#navbar{
+    display: flex;
+    padding: 4px 5px;
+    height: 55px;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+     box-sizing: border-box;
+    justify-content: space-between;
+    background-color: rgb(32,32,32);
+    align-items:center;   
+    position: sticky; 
+    top: 0px;
+    z-index: 10;
+}
+
+#left-nav, #center-nav, #right-nav{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items:center;   
+}
+#center-nav{
+   width: 35%;
+
+}
+#right-nav{
+    gap: 10px;
+    margin-right: 20px;
+    justify-content: center;
+    align-content: center;
+    caret-color: rgba(0,0,0,0);
+}
+#right-nav div{
+ height: 45px;
+ width: 45px;
+ font-size: 22px;
+ display: flex;
+ flex-direction: row;
+ border-radius: 50%;
+/* background-color: blue; */
+justify-content: center;
+align-items: center;
+color: white;
+caret-color: rgba(0,0,0,0);
+}
+
+#left-nav i:nth-child(2){
+   font-size: 30px;
+   color: red;
+   margin-left: 20px;
+   margin-right: 5px;
+   caret-color: rgba(0,0,0,0);
+}
+
+#left-nav i:nth-child(1){
+    font-size: 30px;
+   color: rgb(144,144,144);
+   margin-left: 20px;
+   margin-right: 5px;
+   caret-color: rgba(0,0,0,0);
+}
+#youtube-logo{
+    font-size: 23px;
+    color: whitesmoke;
+    caret-color: rgba(0,0,0,0);
+}
+sup{
+    font-size: 13px;
+    margin: 5px;
+  
+}
+
+#search-box{
+    height: 35px;
+    width: 90%;
+    background-color: rgb(49,49,49);
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+
+#search-bar{
+    height: 33px;
+    margin-top: 1px;
+    margin-left: 1px;
+    width: 90%;
+    padding: 10px;
+    font-size: 15px;
+    box-sizing: border-box;
+    background-color: rgb(18,18,18);
+    color: rgb(114,114,114);
+   
+    /* border: 1px solid rgb(144,144,144); */
+
+
+}
+
+#search-bar:focus{
+    box-sizing: border-box;
+border-color: blue;
+}
+
+#search-icon{
+    font-size: 18px;
+    color: rgb(204,204,204);
+    margin-top: 2%;
+    margin-left: 2.8%;
+    caret-color: rgba(0,0,0,0);
+}
+#voice-icon{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-content: center;
+font-size: 18px;
+margin-left: 15px;
+height: 40px;
+width: 40px;
+border-radius: 50%;
+background-color:rgb(18,18,18) ;
+padding: 10px;
+box-sizing: border-box;
+color: rgb(204,204,204);
+caret-color: rgba(0,0,0,0);
+}
