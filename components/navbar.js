@@ -2,7 +2,7 @@ function navbar() {
     return `  <div id="left-nav">
     <i class="gg-menu" id="menu"></i>
      <i id="home" class="fab fa-youtube" style=" background-color: whitesmoke; padding: 0px 0px; "></i>
-     <h4 id="youtube-logo">YouTube<sup>in</sup></h4>
+   <a href ="index.html">  <h4 id="youtube-logo">YouTube<sup>in</sup></h4> </a>
  </div>
 
  <div id="center-nav">
