@@ -66,6 +66,8 @@
 
       searchVideos();
 
+      
+
      })
      document.getElementById("search-bar").addEventListener("keypress",(event)=>{
 if(event.key=="Enter") {
@@ -104,7 +106,7 @@ let URL = `https://youtube.googleapis.com/youtube/v3/search?q=${inp}&key=${API}&
 let response = await fetch(URL);
 let data = await response.json();
 let array_of_videos = data.items;
-// console.log(data);
+console.log(array_of_videos);
 appendVideos(array_of_videos);
 
 } catch(err) {
@@ -115,10 +117,10 @@ appendVideos(array_of_videos);
 
 
 function appendVideos(arr) {
-console.log(arr);
-
-arr.forEach(({ id:{videoId},snippet}) => {
-
+console.log(arr)
+    searchResult.innerHTML = "";
+arr.forEach(({ id,snippet}) => {
+let videoId = id?.videoId ?? id;
 let imgurl = snippet.thumbnails.medium.url;
 // console.log(url)
 let div = document.createElement("div");
@@ -156,10 +158,10 @@ searchResult.append(div);
 
 }
 
-const showVideo = (video_data)=> {
+function showVideo  (video_data) {
 
 localStorage.setItem("clicked_video",JSON.stringify(video_data));
-window.open("video.html");
+window.location.href = "video.html";
 
 }
 

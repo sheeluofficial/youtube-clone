@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+          #navbar{
+            width: 300px;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin-top: 30px;
+            margin-bottom: 50px;
+
+        }
+        #searchbar{
+            padding: 7px;
+            border-radius: 10px;
+            border:rgb(33, 45, 112) 2px solid ;
+    
+
+
+        }
+        #searchbtn{
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(38, 37, 88);
+            color: white;
+            cursor: pointer;
+
+        }
+
+        #searchResult{
+            width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4,auto);
+            justify-content: space-around;
+            grid-gap: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="navbar">
+        
+        <div>
+            <input type="text" id="searchbar" placeholder="Search Videos">
+            <button id="searchbtn" onclick="searchVideos()">Get Video!</button>
+        </div>
+         <div>
+
+         </div>
+        
+</div>
+    <div id="searchResult"></div>
+    
+</body>
+</html>
+<script>
+    // let URL = 'https://youtube.googleapis.com/youtube/v3/search?q=Sales&key=[YOUR_API_KEY] '
+    let API = "AIzaSyCJv4VPPWEAHl_As87OHNcvb9Si7a3akM4"
+    let searchResult = document.getElementById("searchResult");
+
+
+async function searchVideos() {
+
+    try{
+        let inp = document.getElementById("searchbar").value;
+
+        inp = inp.split(" ");
+        inp = inp.join("+")
+
+    let URL = `https://youtube.googleapis.com/youtube/v3/search?q=${inp}&key=${API}&type=video&maxResults=40&part=snippet`
+   
+
+    let response = await fetch(URL);
+    let data = await response.json();
+    let array_of_videos = data.items;
+    // console.log(data);
+    appendVideos(array_of_videos);
+    
+    } catch(err) {
+        console.log(err);
+    }
+  
+}
+
+
+function appendVideos(arr) {
+    console.log(arr);
+
+arr.forEach(({ id:{videoId},snippet}) => {
+
+    let imgurl = snippet.thumbnails.medium.url;
+    // console.log(url)
+    let div = document.createElement("div");
+    // div.addEventListener("click",()=>{
+
+    // })
+
+    let video_data = {
+        snippet,
+        videoId,
+    }
+
+    div.onclick = ()=>{
+
+        showVideo(video_data);
+    }
+    
+    let img = document.createElement("img");
+    img.src = imgurl;
+
+    let h4 = document.createElement("h4");
+        h4.innerText = snippet.title;
+//     let iframe = document.createElement("iframe");
+//   let url  = `https://www.youtube.com/embed/${videoId}`;
+//     iframe.setAttribute("src",url)
+//     iframe.width = "270px"
+//     iframe.height = "170px"
+//     iframe.style.border = "none"
+
+
+    div.append(img,h4);
+    searchResult.append(div);
+});
+
+}
+
+const showVideo = (video_data)=> {
+
+    localStorage.setItem("clicked_video",JSON.stringify(video_data));
+    window.open("video.html");
+
+}
+
+</script>
